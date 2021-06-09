@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // let arr = [1,4,2,8,5,7]
+    let arr = [2,76,5,8,4,1,26,16,95,101,41]
+    k=4
+    function foo(arr,k){
+        //第一种
+        // let arr2 = arr.sort((a,b)=>b-a)
+        // return arr2[k-1]
+        //第二种
+        for(i=arr.length-1;i>=arr.length-k;i--){
+            for(j=0;j<i;j++){
+               if(arr[j]>arr[j+1]){
+                  [arr[j],arr[j+1]] = [arr[j+1],arr[j]] 
+               }
+            }
+        }
+        return arr[arr.length-k]
+    }
+    console.log(foo(arr,k))
+</script>
+</html>

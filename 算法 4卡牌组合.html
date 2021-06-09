@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let arr = [1,1,1,1,1,1,2,2,2]
+    function fn(a,b){
+        if(b==0){
+            return a
+        }
+        else{
+             return fn(b,a%b)
+        }      
+    }
+    // console.log(fn(3,6))
+    function foo(arr){
+       let str = arr.sort((a,b)=>a-b).join('')
+       let s = str.match(/(\d)\1+|(\d)/g)
+       while(s.length>1){
+            //  console.log(s[0].length)
+            let i = s.shift().length;
+            let j = s.shift().length;
+            let k = fn(i,j)
+            s.unshift('@'.repeat(k))
+            console.log(i)
+       }
+    
+       return s[0].length>1?true:false
+     
+    }
+    console.log(foo(arr))
+</script>
+</html>

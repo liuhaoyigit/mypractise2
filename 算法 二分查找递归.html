@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function binary_search(arr,low, high, key) {
+    if (low > high){
+        return -1;
+    }
+    var mid = low + ((high - low) >> 1);
+    if(arr[mid] == key){
+        return mid;
+    }else if (arr[mid] > key){
+        high = mid - 1;
+        return binary_search(arr, low, high, key);
+    }else if (arr[mid] < key){
+        low = mid + 1;
+        return binary_search(arr, low, high, key);
+    }
+};
+var arr = [5,13,19,21,37,56,64,75,80,88,92];
+var result = binary_search(arr,0, 11, 21);
+console.log(result);
+</script>
+</html>

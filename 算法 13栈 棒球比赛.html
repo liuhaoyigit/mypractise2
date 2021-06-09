@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let arr = ['5', '2', 'c', 'd', '+']
+    let arr1 = ['5','-2','4','c','d','9','+','+']
+    function sumCount(option) {
+        let res = [];
+        let pre1;
+        let pre2;
+        option.map((val) => {
+            switch (val) {
+                case 'c':
+                    if (res.length > 0) {
+                        res.pop()
+                    }
+                    break;
+                case 'd':
+                    if (res.length > 0) {
+                        pre1 = res.pop()
+                        res.push(pre1, pre1 * 2)
+                    }
+                    break;
+                case '+':
+                    if (res.length > 1) {
+                        pre1 = res.pop()
+                        pre2 = res.pop()
+                        res.push(pre2,pre1,pre2+ pre1)
+                    }
+                    break;
+                default:
+                    res.push(val*1)
+                    break;
+            }
+        })
+        // return res
+       return res.reduce((total,num)=>total+num)
+    }
+    console.log(sumCount(arr1))
+</script>
+
+</html>

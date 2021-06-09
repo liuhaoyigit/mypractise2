@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // function fn(n, m) {
+    //     let x = m + n - 2;
+    //     let y = m - 1; 
+    //     let xx = 1;
+    //     let yy = 1;
+    // for(let i = 1;i < m; i++){
+    //     let temp = i*xx
+    //     xx = temp
+    // }
+    // for(let j = 1;j < m; j++){
+    //     let temp = yy*(m+n-j-1)
+    //     yy = temp
+    // }
+
+    //    return (yy/xx)
+    // }
+    // console.log(fn(3,3))
+     
+     function fn(m,n){
+         if(m==2&&n==2){
+             return 2
+         }
+         else if(m==1||n==1){
+             return 1
+         }
+         else{
+             return fn(m-1,n)+fn(m,n-1)
+         }
+     }
+    console.log(fn(51,9))
+</script>
+
+</html>

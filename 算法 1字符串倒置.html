@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+</body>
+<script>
+    let str = '超启王 是 叉傻 okay yea'
+    function resever(s) {
+        //    let arr =s.split(" ");
+        //    let string=arr.map((item)=>{
+        //         return item.split('').reverse().join('')   
+        //    })
+        //    return string.join(' ');   
+        return s.split(" ").map((item) => {
+            return item.split('').reverse().join('')
+        }).join(' ');
+
+    }
+    console.log(resever(str));
+</script>
+
+</html>

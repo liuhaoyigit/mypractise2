@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+   function fn(n) {
+    let res = []
+    if (!n) return res;  
+    function generate(left, right, n, s){
+        if (left === n && right === n) {
+            res.push(s)
+            return 
+        }
+        left < n && generate(left+1, right, n, s + '(')
+        left > right && generate(left, right+1, n, s + ')')
+    }
+    generate(0, 0, n, '')
+    return res
+};
+console.log(fn(4))
+</script>
+</html>

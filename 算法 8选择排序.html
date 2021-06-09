@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let arr = [2,5,8,1,4,41,16,95,101,76,26]
+    // let arr = [4,2,7,5,6]
+    function foo(arr){
+       for(i=0;i<arr.length;i++){
+           for(j=i+1;j<arr.length;j++){
+               if(arr[j]>arr[i]){
+                   [arr[i],arr[j]] = [arr[j],arr[i]]
+               }
+           }
+       }
+       
+
+       return arr
+    }
+    console.log(foo(arr))
+</script>
+</html>

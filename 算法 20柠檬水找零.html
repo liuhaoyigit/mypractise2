@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let array = [5,5,5,10,20]
+    let array1 = [10,10]
+    let array2 = [5,5,10,10]
+    let array3 = [5,10,20,5]
+    function fn(arr){
+       let box = [];//零钱库
+       while(arr.length>0){
+         let money = arr.shift();
+         if(money == 5){
+           box.push(money)
+         }else{
+             let rest = money-5;//需要找零多少
+             box.sort((a,b)=>b-a);
+             for(i=0;i<box.length;i++){
+                 if(rest >= box[i]){
+                    rest -= box[i];
+                     box.splice(i,1);//把找到的零钱删除
+                     i--;
+                     if(rest == 0){
+                         box.push(money);
+                         break;
+                     }
+                 }
+             }
+             if(rest != 0){
+                 return false;
+             }
+         }
+       }
+       return true;      
+    };
+    console.log(fn(array3))
+</script>
+</html>

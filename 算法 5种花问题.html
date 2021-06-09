@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    let arr = [1, 0,0,0,1,0,1,0,0,0,1,0,0,0,0,0,1 ]
+    n =4
+    m =6
+    function foo(arr, n) {
+        let max = 0
+        function fn(arr,max) {
+            let start = arr.join('').indexOf('1000');
+            if (start == -1) {
+                if(max>=n){
+                    console.log(true)
+                }
+                else{
+                    console.log(false)
+                }             
+            }
+            else {
+                max = max + 1         
+                arr[start + 2] = 1
+                let arr2 = [...arr]
+                fn(arr2,max)
+            }
+            return max
+        }
+        fn(arr,max)
+    }
+   foo(arr, n)
+</script>
+
+</html>

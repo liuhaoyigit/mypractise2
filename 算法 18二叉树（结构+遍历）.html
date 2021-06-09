@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let arr = [5, 6, 2, 9, 4, 1, 7]
+    class Node {
+        constructor(val) {
+            this.key = val;
+            this.left = undefined;
+            this.right = undefined
+        }
+    }
+    class treeNode {
+        constructor(arr) {
+            this.root = undefined;
+            arr.map((item)=>{
+                this.insert(item)
+            })
+        }
+        insert(key) {
+            if (!this.root) {
+                this.root = new Node(key);
+            } else {
+                this.insertNode(this.root, key)
+            }
+        }
+        insertNode(node, key) {
+            if (node.key < key) {
+                if (!node.right) {
+                    node.right = new Node(key)
+                }
+                else {
+                    this.insertNode(node.right,key)
+                }
+            }
+            else {
+                if (!node.left) {
+                    node.left = new Node(key)
+                }
+                else {
+                    this.insertNode(node.left,key)
+                }
+            }
+        }
+        min(){
+            function fn(node){
+              while(node.left){
+                  node = node.left;
+              }
+             return node.key;
+            }
+            return fn(this.root)
+        }
+        max(){
+            function fn(node){
+              while(node.right){
+                  node = node.right;
+              }
+             return node.key;
+            }
+            return fn(this.root)
+        }
+        middle(){                             //中序遍历
+            function fn(node){
+                if(node.left){
+                    fn(node.left)
+                }
+                console.log(node.key)
+                if(node.right){
+                    fn(node.right);
+                }
+            }
+            fn(this.root)
+        }
+        front(){                            //前序遍历
+            function fn(node){ 
+                console.log(node.key)
+                if(node.left){
+                    fn(node.left)
+                }   
+                if(node.right){
+                    fn(node.right);
+                }
+            }
+            fn(this.root)
+        }
+        rear(){                              //后序遍历
+            function fn(node){ 
+                
+                if(node.left){
+                    fn(node.left)
+                }   
+                if(node.right){
+                    fn(node.right);
+                }
+                console.log(node.key)
+            }
+            fn(this.root)
+        }
+
+    }
+    let n = new treeNode(arr)
+    let m = new treeNode([6,3,5,4,8,7])
+    // console.log(n.max())
+    // m.middle()
+    m.front()
+    // m.rear()
+</script>
+
+</html>

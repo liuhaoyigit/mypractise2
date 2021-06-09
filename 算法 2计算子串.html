@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let str='11001100';   //6      //let str='10101'       //4
+    function fn(str){
+      let arr=str.match(/^(0+|1+)/g)
+      let a=arr[0]
+      if(a==(str.match(/^(0+)/g))){
+        let b='1'; 
+        let after=b.repeat(a.length);
+        let reg=new RegExp(`^${a}${after}`);
+        if(reg.test(str)){
+            return`${a}${after}`;
+        }
+        else{
+            return '';
+        }
+      }else{
+        let c='0';
+        let after2=c.repeat(a.length)   
+        let reg=new RegExp(`^${a}${after2}`); 
+        if(reg.test(str)){
+            return`${a}${after2}`;
+        } else{
+            return '';
+        }
+      }
+    }
+    function computed(s){
+        let res=[];
+       
+       for(i=0;i<s.length-1;i++){
+           let r=fn(s.slice(i));
+           if(r!=''){ 
+               res.push(r)
+           }
+       }
+       return res;
+    }
+    console.log(computed(str).join(' '));
+    console.log(computed(str).length);
+</script>
+</html>

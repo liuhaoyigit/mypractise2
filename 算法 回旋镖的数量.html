@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 给定平面上 n 对 互不相同 的点 points ，其中 points[i] = [xi, yi] 。回旋镖 是由点 (i, j, k) 表示的元组 ，
+其中 i 和 j 之间的距离和 i 和 k 之间的距离相等（需要考虑元组的顺序）。 
+   回旋镖的数量 -->
+
+<body>
+
+</body>
+<script>
+    points = [[0, 0], [1, 0],[6,8]]
+
+
+    var numberOfBoomerangs = function (points) {
+        let rest = points.length*points.length
+        let sum = 0
+        if (points.length < 3) {
+            return sum = 0
+        }
+        else {
+
+            function compare(a, b, c) {
+                let flag = ((b[0] - a[0]) * (b[0] - a[0]) + (b[1] - a[1]) * (b[1] - a[1])) == ((b[0] - c[0]) * (b[0] - c[0]) + (b[1] - c[1]) * (b[1] - c[1]))
+                if (flag) {
+                    sum++
+                }
+                else {
+                    sum = sum
+                }
+                
+            }
+            let a = []
+            let b = []
+            let c = []
+            for (let i = 0; i < points.length; i++) {
+                for (let j = 0; j < points.length; j++) {
+                    for (let k = 0; k < points.length; k++) {
+                        a = points[i]
+                        b = points[j]
+                        c = points[k]
+                        compare(a, b, c)
+                    }
+                }
+            }
+                return sum-rest
+        }
+
+    };
+    console.log(numberOfBoomerangs(points))
+</script>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let arr = [8, 9, 4, 6, 2, 5, 7]
+    class Node {
+        constructor(item) {
+            this.value = item;
+            this.next = null;
+        }
+    }
+    class NodeList {
+        constructor() {
+            this.first = new Node(arr[0])
+            let temp = this.first
+            for (let i = 1; i < arr.length; i++) {
+                temp.next = new Node(arr[i])
+                temp = temp.next
+            }
+            return this.first
+        }
+    }
+    let n = new NodeList(arr)
+    console.log(n)
+    function isCircle(first) {
+        let slow = first;
+        let fast = first.next;
+        while (1) {
+            if (!fast || !fast.next) {
+                return false
+            }
+            else if (slow == fast || slow == fast.next) {
+                return true
+            }
+            else {
+                slow = slow.next;
+                fast = fast.next.next;
+            }
+        }
+    }
+    n.next.next.next.next.next = n.next.next
+    // while (n != null) {
+    //     console.log(n.value)
+    //     n = n.next
+    // }
+    console.log(isCircle(n))
+   
+</script>
+
+</html>

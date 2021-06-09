@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 一个强密码应满足以下所有条件：
+
+    由至少6个，至多20个字符组成。
+    至少包含一个小写字母，一个大写字母，和一个数字。
+    同一字符不能连续出现三次 (比如 "...aaa..." 是不允许的, 但是 "...aa...a..." 是可以的)。
+    编写函数 strongPasswordChecker(s)，s 代表输入字符串，如果 s 已经符合强密码条件，则返回0；否则返回要将 s 修改为满足强密码条件的字符串所需要进行修改的最小步数。
+    
+    插入、删除、替换任一字符都算作一次修改。 -->
+    <script>  
+        var strongPasswordChecker = function (password) {
+            let temp = 0
+            let sum = [0, 0, 0]
+            let sun = 0;
+            let arr = []
+            let flag = 0;
+            let newArr = password.split('')
+            let newa = []
+            newArr = new Set(newArr)
+            let reg1 = /[a-z]/
+            let reg2 = /[A-Z]/
+            let reg3 = /[0-9]/
+            let reg5;
+            let array = Array.from(newArr)
+            let x = []
+            let y = []
+            let password1 = password
+            array.map((val) => {
+                for (i = password.length-1; i >=3; i--) {
+                    let s = val.repeat(i)
+                    if (password1.includes(s)) {
+                        let str = password1.split(s).join('')               
+                        x.push(password1.length-str.length)
+                        password1 = str
+                        flag--
+                    }
+                }
+            })
+            let a = reg1.test(password)
+            let b = reg2.test(password)
+            let c = reg3.test(password)
+            function foo() {
+                if (flag == 0) {
+                    sum[2] = 0
+                }
+                else {  
+                    
+                    let last = [];
+                    for (i = 0; i < x.length; i++) {
+                        last.push(parseInt(x[i]/3))
+                    }
+                  
+                    last.map((value) => {
+                        sun = sun + value
+                    })  
+                    sum[2] = sun
+                }
+            }
+            function fn() {
+                if (password.length < 6) {
+                    sum[1] = 6 - password.length
+                    foo()
+                }
+                else if (password.length > 20) {
+                    sum[1] = password.length - 20
+                    temp = password.length - 20
+                    foo()
+                }
+                else {
+                    foo()
+                }
+            }
+
+            if (a && b && c) {
+                fn()
+            }
+            else {
+                let count = 0;
+                arr.push(a)
+                arr.push(b)
+                arr.push(c)
+                arr.map((val) => {
+                    if (val) {
+                        count++
+                    }
+                })
+                sum[0] = 3 - count
+                fn()
+            }
+            return sum.sort((a,b)=>b-a)[0]+temp
+        };
+        console.log(strongPasswordChecker('ABABABABABABABABABAB1'))
+    </script>
+</body>
+
+</html>

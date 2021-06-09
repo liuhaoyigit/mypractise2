@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+</body>
+<script>
+   var examplearr=[8,94,15,88,55,76,21,39];
+function fastsort(arr){
+  if(arr.length<2){
+    return arr;
+  }
+  var left=[];
+  var right=[];
+  var pivotIndex=Math.floor(arr.length/2);
+  var pivot=arr.splice(pivotIndex,1)[0];
+  console.log(pivot)
+  for(i=0;i<arr.length;i++){
+    if(arr[i]<pivot){
+      left.push(arr[i]);
+    }else{
+      right.push(arr[i])
+    }
+  }
+  return fastsort(left).concat([pivot],fastsort(right));
+}
+console.log(fastsort(examplearr));
+    
+</script>
+
+</html>

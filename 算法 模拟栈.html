@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 栈是先进后出
+function Stack(){
+    let res = []
+    this.push  = function(num){
+         res.push(num)
+    }
+    this.pop = function(){
+        res.pop()
+    }
+    return res
+}
+let stack = new Stack()
+stack.push('a')
+stack.push('b')
+stack.push('c')
+stack.push('d')
+stack.push('e')
+console.log(stack)
+stack.pop()
+stack.pop()
+stack.pop()
+console.log(stack)
+</script>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 队列 先进先出
+    function Queue() {
+        this.arr = [];
+        this.push = function (value) {
+            this.arr.push(value);
+        }
+        this.pop = function () {
+            this.arr.shift();
+        }
+    }
+
+    var queue = new Queue();
+    queue.push(1);
+    queue.push(2);
+    queue.push(3);
+    console.log(queue.arr);
+    queue.pop();
+    console.log(queue.arr);
+
+</script>
+
+</html>
