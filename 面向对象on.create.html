@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+  var o1 = new Object();
+  o1.name = 'hpg';
+  o1.age = 23;
+  o1.sayHello = function(){
+      console.log('sayHello o1')
+  };
+  console.log(o1);
+
+  var o2 = {
+      name:'wsj',
+      age:34,
+      sayHello:function(){
+        console.log('sayHello o2')
+      }
+  }
+  console.log(o2)
+  var o3 = Object.create(o1)
+  o3.gender = 'male';
+  console.log(o3 == o1)
+  console.log(o3)
+  console.log(o3.name,o3.age)
+  o1.name = 'fjh'
+  console.log(o3.name)
+
+  console.log(o1.name)
+  console.log(o3);
+
+  o1.name = 'join';
+  console.log(o3.name)
+  var o4 = Object.create(null);
+  console.log(o4);
+  var o5 = {};
+  console.log(o5);
+  var o6 = {};
+  console.log(o6);
+
+  var o7 = Object.create({});
+  console.log(o7)
+
+  var o8 = Object.create(Object.prototype);
+  console.log(o8)
+</script>
+</html>

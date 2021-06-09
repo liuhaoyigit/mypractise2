@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+</body>
+<script>
+    let str = 'ab'
+    let string = 'abc'
+    let count = []
+    let sum=''
+    function fooo(str) {
+        for (k = 0; k < str.length; k++) {
+
+            let arr1 = [];
+            arr1.push(str.slice(0, k + 1), '')
+            // console.log(arr1)
+            let arr2 = [];
+            arr2.push(str.slice(k + 1, k + 2), '')
+            // console.log(arr2)
+
+            function foo(arr1, arr2) {
+                for (i = 0; i < arr1.length; i++) {
+                    for (j = 0; j < arr2.length; j++) {
+                        // console.log(arr1[i] + arr2[j])
+                        sum=sum+arr1[i] + arr2[j]+','
+                       
+                       console.log(sum)
+
+                    }
+                }
+
+            }
+            let a=foo(arr1, arr2)
+            return a
+        }
+    }
+ fooo(string)
+ 
+
+
+
+
+</script>
+
+</html>

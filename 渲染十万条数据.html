@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     div{
+         width:50px;
+         height: 50px;
+         background-color:aqua;
+      
+         border:1px black  solid;
+         border-radius: 50%;
+     }
+     li{
+        transform: translate(40%,60%);   
+        list-style: none;
+     }
+    </style>
+</head>
+<body>
+  <ul id='container'>
+  </ul>
+</body>
+<script>
+// const total =10;                                                       
+// let oContainer = document.getElementById('container');             //样式练习
+// for(i=0;i<total;i++){
+//     let oDiv = document.createElement('div')
+//     let oLi = document.createElement('li')
+//     oContainer.appendChild(oDiv);  
+//     oDiv.appendChild(oLi);
+//     oLi.innerHTML = i;
+// }  
+
+const total = 100000;
+// let oContainer = document.getElementById('container');             //简单粗暴的方式
+// for(i=0;i<total;i++){
+//   let oLi = document.createElement('li')
+//     oLi.innerHTML = i;
+//     oContainer.appendChild(oLi);
+// }
+
+
+
+let oContainer = document.getElementById('container')
+const once = 2000;
+const page = total/once;
+const index = 0;
+function insert(curTotal,curIndex){
+     if(curTotal<=0){
+         return;
+     }
+     window.requestAnimationFrame(()=>{
+         let fragment = document.createDocumentFragment()
+         for(i=0;i<once;i++){
+             let oLi=document.createElement('li')
+             oLi.innerText = curIndex + i;
+             fragment.appendChild(oLi)
+         }
+         oContainer.appendChild(fragment);
+         insert(curTotal - once,curIndex + once)
+     })
+}
+insert(total,index)
+</script>
+</html>

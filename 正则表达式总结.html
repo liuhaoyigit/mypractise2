@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let str = 'hello world'
+    let reg = /l{1,2}?/
+    let reg1 = /l|h/
+    let reg2 = /l+|l*/
+    let reg3 = /^he/
+    let reg4 = /ld$/
+    let reg5 = /./
+    let reg6 = /[abh]/
+    let reg7 = /[^abh]/
+    let reg8 = /a-zA-Z/
+    let reg9 = /\B|\b/
+    let reg10 = /\s/
+    let reg11 = /\d/
+    let reg12 = /\w/
+    let reg13 = /l/g
+    let reg14 = /\*/
+    console.log(reg9.test(str))
+    console.log(reg.exec(str))
+    console.log(reg7.exec(str)[0])
+   console.log(str.replace(reg3,'reg')) 
+</script>
+</html>

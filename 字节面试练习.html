@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     
+    </style>
+</head>
+<body>
+  
+</body>
+<script>
+
+const interval = 1000
+let ms = 50000  // 从服务器和活动开始时间计算出的时间差，这里测试用 50000 ms
+let count = 0
+const startTime = new Date().getTime()
+let timeCounter
+if( ms >= 0) {
+  timeCounter = setTimeout(countDownStart, interval)
+}
+ 
+function countDownStart () {
+   count++
+   const offset = new Date().getTime() - (startTime + count * interval) // A
+   const nextTime = interval - offset
+   if (nextTime < 0) { 
+       nextTime = 0 
+   }
+   ms -= interval
+   console.log(`误差：${offset} ms，下一次执行：${nextTime} ms 后，离活动开始还有：${ms} ms`)
+   if (ms < 0) {
+     clearTimeout(timeCounter)
+   } else {
+     timeCounter = setTimeout(countDownStart, nextTime)
+   }
+ }
+
+
+ //方法一
+ function sleep1(ms, callback) {
+                setTimeout(callback, ms)
+            }
+            //sleep 1s
+            sleep1(1000, () => {
+                console.log(1000)
+            })
+            //方法二
+            function sleep2(ms) {
+                return new Promise(function(resolve, reject) {
+                    setTimeout(resolve, ms)
+                })
+            }
+            sleep2(1000).then(() => {
+                console.log(2000)
+            })
+            
+function fn(str){
+        var center = parseInt(str.length/2);
+       
+        for(var i=0;i<center;i++){
+            if(str[i] != str[str.length-1-i]){
+                return false;
+            }
+        }
+        return true;
+    }
+ 
+    console.log(fn("abcdedcba"));       //t
+    console.log(fn("abcddcba"));        //t
+    console.log(fn("abcdabc")); 
+ 
+let arr= [1,2,3,[4,5,6,[7,8,9,[10,11,12]]]];
+arr.flat() == arr.flat(1);               // [1,2,3,4,5,6,Array(4)]
+arr.flat().flat() == arr.flat(2);        // [1,2,3,4,5,6,7,8,9,Array(3)]
+arr.flat().flat().flat() == arr.flat(3); // [1,2,3,4,5,6,7,8,9,10,11,12]
+console.log(arr.flat(Infinity))
+
+
+function compare(origin, target) {
+    if (typeof target === 'object')    {
+        if (typeof origin !== 'object') return false
+        for (let key of Object.keys(target))
+            //继续去递归调用
+            if (!compare(origin[key], target[key])) {
+                  return false
+            }
+        return true
+    } else {
+       return origin === target
+    }
+}
+
+console.log(compare(A,B))
+
+class MyPromise{
+    constructor(executorCallback){ //executorCallback执行的回调函数
+        let _this = this;
+        _this.status = 'pending'; //记录状态
+        _this.value = ''; //记录返回的数据
+        function resolveFn(result){
+            if(_this.status === 'pending'){ //状态只能是从pending到成功
+                _this.status = 'resolved'
+                _this.value = result
+            }
+        }
+        function rejectFn(reason){
+            if(_this.status === 'pending'){ //状态只能是从pending到失败
+                _this.status = 'rejected'
+                _this.value= reason
+            }
+        }
+     executorCallback(resolveFn,rejectFn)
+    }
+    //判断状态成功还是失败，成功了执行onFullfiled，失败了执行onRejected
+    then(onFullfiled,onRejected) {
+        if(this.status === 'resolved'){
+            onFullfiled(this.data)
+        }
+        if(this.status === 'rejected'){
+            onRejected(this.err)
+        }
+    }
+}
+
+
+let p1 = new MyPromise((resolveFn,rejectFn)=>{
+      resolveFn('aaa')
+      rejectFn('bbb')
+})
+p1.then(result =>{
+    console.log('result:'+result)
+},reason =>{
+    console.log('reason:'+reason)
+})
+
+Array.prototype.fakeReduce = function fakeReduce(fn, base) {
+
+let initialArr = this;
+let arr = initialArr.concat();
+
+if (base) arr.unshift(base);
+let index, newValue;
+
+while (arr.length > 1) {
+  index = initialArr.length - arr.length + 1;
+  newValue = fn.call(null, arr[0], arr[1], index, initialArr);
+
+  arr.splice(0, 2, newValue); 
+}
+
+return newValue;
+};
+
+
+let arr = [1, 2, 3, 4, 5];
+let sum = arr.fakeReduce((prev, cur, index, arr) => {
+console.log(prev, cur, index, arr);
+return prev * cur;
+}, 1000);
+
+console.log(sum);
+
+
+          
+</script>
+</html>

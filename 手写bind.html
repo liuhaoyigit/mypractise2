@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    Function.prototype.mybind = function () {
+        const args = Array.prototype.slice.call(arguments)
+        const t = args.shift()
+        const self = this
+        return function () {
+            return self.apply(t, args)
+        }
+    }
+    var obj={
+        a:1
+    }
+    var a = 2;
+    function foo(){
+        console.log(this.a)
+    }
+    foo.mybind(obj)()
+</script>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function deepClone(target) {
+        let result;
+        if (typeof target === 'object') {
+            if (Array.isArray(target) == true) {
+                result = [];
+                for (let item of target) {
+                    result.push(deepClone(item))
+                }
+
+            } else {
+                result = {};
+                for (let item in target) {
+                    result[item] = deepClone(target[item])
+                }
+            }
+        }
+        else {
+            result = target;
+        }
+        return result
+    }
+    obj = {
+        a: '1',
+        b: 2,
+        c: true,
+        d: [1, 2, 3, 4]
+    }
+    string = 'aaa'
+    array = ['a', 1, 2, 3, false]
+
+
+    let obj2 = deepClone(obj)
+    obj.d[1]=95
+    console.log(obj2)
+
+
+</script>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function throttle(fn,delay){
+        var sTime = 0;
+        return function(e){
+            var nTime = Date.now();
+            if(nTime-sTime>delay){
+                fn(e);
+                sTime = nTime;
+            }
+        }
+    }
+    document.onmousemove = throttle(function(e){
+        console.log(e.clientX)
+    },1000)
+</script>
+</html>

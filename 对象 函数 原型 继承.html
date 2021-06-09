@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+    //  var p1 = {            //对象
+    //     name: 'zs',
+    //     age:20,
+    //     say:function(){
+    //         console.log('haha')
+    //     }
+    // }
+    // console.log(p1)
+    // function Person(name,age){          //Person函数 sy实例化对象
+    //   this.name=name
+    //   this.age=age
+    //   this.say=function(){
+    //       console.log('傻×:'+this.name)
+    //   }
+    // }
+    // var sy = new Person('舒宇',120)
+    // console.log(sy)
+    // sy.say()
+    function Dog(name){                       //原型对象  继承
+        this.name=name
+    }
+    Dog.prototype.color='black'
+    Dog.prototype.say=function(word){
+        console.log('我叫陈昊'+word+' 韩亮是我爹')
+    }
+    var cht = new Dog('dog')
+    console.log(cht)
+    cht.say('天')
+
+    var chw = new Dog('dog')
+    console.log(chw.color)
+    chw.say('文')
+
+    function BlackDog(name){
+        Dog.call(this,name)
+    }
+  
+    BlackDog.prototype = new Dog();
+    BlackDog.prototype.constructor = BlackDog;
+    var chn = new BlackDog('Dog')
+    console.log(chn)
+    chn.say('楠')
+</script>
+</html>

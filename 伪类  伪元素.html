@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .a{
+        background:gold;
+        width: 250px;
+        height: 50px;
+    }
+    .a::after{
+        content:'222';
+        margin-left:50px;
+    }
+    .a::before{
+        content:'000';
+        margin-right: 50px;
+    }
+    .a:hover{
+        background:silver;
+    }
+    </style>
+</head>
+<body>
+    <div class='box'>伪类 伪元素</div>
+    <div class='a'>111</div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var obj = {
+        name:'陈昊天',
+        content:'',
+        get dog(){
+            if(this.content=='给你改姓'){
+                return this.name+'叫'+'魏生津'
+            }
+            throw new Error('略略略')
+        },
+        // get age(){
+        //     return 朱逸群
+        // },
+        set dog(newAge){
+            console.log(this.name+'叫'+newAge)
+        }
+    }
+    
+    obj.content='给你改姓'    
+    console.log(obj.dog)
+    obj.dog='侯辟谷'
+    console.log(obj.dog)
+</script>
+</html>

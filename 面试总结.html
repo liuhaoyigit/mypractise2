@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a {
+            /* 面试一 */
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+
+        .b {
+            width: 80%;
+            padding-top: 40%;
+            background: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='a'>
+        <div class='b'></div>
+    </div>
+</body>
+<script>
+    // var say = function(){     //面试二
+    //     console.log(words)
+    // } 
+    // function run(){
+    //     var words = 'hello'
+    //     say()
+    // }
+
+    // run()
+    // var words = 'my'
+ 
+
+
+
+
+
+// let name ='X'            //面试三
+// const people={
+//     name:'y',
+//     setName(name){
+//         this.name = name
+//         return ()=>{
+//         return this.name
+//       }
+//     }   
+// }
+// let setName = people.setName
+// let getName = setName(name)
+// console.log(people.name)
+// console.log(getName())
+
+let a =[1,2,3,4,5,9]        //面试算法
+let b =[3,4,5,6,7,8]
+let c =[2,5,6,7,8,9]
+function getUnion(x, y, z) {
+        var concatArr = x.concat(y).concat(z);
+        for (var i = 0; i < concatArr.length; i++) {
+            for (var j = i + 1; j < concatArr.length;) {
+                if (concatArr[i] == concatArr[j]) {
+                    concatArr.splice(j, 1);
+                } else {
+                    j++;
+                }
+            }
+        } 
+            let arr = []
+            arr = (a.join('')+b.join('')+c.join('')).split('').sort()
+            for(i=0;i<arr.length;i++){
+                if(arr[i]==arr[i+1]&&arr[i]==arr[i+2]){
+                    arr.splice(i,2)            
+                }
+                else{
+                    arr.splice(i,1)
+                    i--
+                }
+            }
+        return arr;
+    }
+    console.log(getUnion(a,b,c))
+</script>
+
+</html>

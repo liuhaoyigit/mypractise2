@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+.circle{
+    display:block;
+    width:50px;
+    height:50px;
+    border:1px solid black;
+    border-radius: 50%;
+}
+
+
+    </style>
+</head>
+
+<body>
+
+<span class='circle'></span>
+</body>
+<script>
+
+let arr = [1,[2,3,[4,5]]]
+function fn(arr){
+    let array = []
+    arr.map((val)=>{
+        // console.log(val)
+        if(typeof(val)=='number'){
+               array.push(val)
+        }
+        else{
+            array.push(...fn(val))
+        }
+    })
+    return array
+}
+console.log(fn(arr))
+// let string = 'asdfgasda'//sdfgsd
+// function foo(str){
+//     let count = 0
+//     let arr = str.split('')
+//     let array =new Set(arr)
+//    let arr1 =  Array.from(array)    
+//    let arr2 = []
+//    arr1.map((val)=>{
+//         let str1=string.split(val).join('')  
+//         arr2.push(str1)     
+//    })
+
+//   console.log(arr2.sort((a,b)=>{return a.length-b.length})[0])   
+//     console.log(arr1)
+//     return str
+// }
+// console.log(foo(string))
+
+</script>
+
+</html>

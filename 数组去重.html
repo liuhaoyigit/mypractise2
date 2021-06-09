@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    
+    </style>
+</head>
+<body>
+  
+</body>
+<script>
+  
+function unique (arr){              //1 new Set
+    return Array.from(new Set(arr))
+}
+var arr =[1,1,2,3,4,5,5,6,1,'true','true',true,true,null,NaN,null,NaN]
+console.log(unique(arr))
+
+function unique2(array){                     //2 for循环
+    for(i=0;i<array.length;i++){
+        for(j=i+1;j<array.length;j++){
+            if(array[i]==array[j]){
+                array.splice(j,1);
+                j--;
+            }
+        }
+    }
+    return array;
+}
+// var array = [1,1,2,2,3,3,4,1,'true','true',true,true,null,NaN,null,NaN];
+// console.log(unique2(array))
+
+// let arr = [1,2,3,4,1,2,5,7];   //定义数组              //3 new Set升级版
+//     let newArr = new Set(arr); //用new Set封装成类数组
+//     arr = Array.from(newArr)   //类数组转换成数组
+//     console.log(arr)           //输出
+</script>
+</html>

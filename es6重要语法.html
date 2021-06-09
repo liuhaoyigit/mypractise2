@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+</body>
+<script>
+    arr = [5, 4, 3, 2, 1]
+    obj = {
+        name: '童琳',
+        song: '想和你',
+        level: '无损',
+        content: {
+            first: '想和你在天空中翱翔',
+            second: '想和你在海洋里荡漾',
+            thrid: '想在晴天 和你仅靠',
+            fouth: '爱情的气息慢慢绕',
+        }
+    }
+    for (let key of arr.keys()) {
+        console.log(key);
+    }
+    for (let val of arr) {
+        console.log(val);
+    }
+    for (let [key1, val1] of arr.entries()) {
+        console.log(key1, val1);
+    }
+
+    let arr3 = arr.map(function (key, val) {
+        if (val != 3) {
+            return key
+        }
+        else {
+            return `$${val + 1}`
+        }
+    })
+    console.log(arr3)
+
+    let arr2 = ['我愿意', '一直', '这样', ...arr, '变成你', '爱的', '模样']
+    console.log(arr2)
+
+    for (key in obj) {
+        console.log(key)
+        console.log(obj[key])
+        console.log(obj.content.first)
+    }
+
+    let obj = {     //浅拷贝
+    name:'F.I.R',
+    song:'月牙湾',
+    voice:'无损'
+}
+let obj2 = obj;
+obj.name = '飞儿乐团';
+console.log(obj2)
+
+let obj = {     //单层完全拷贝
+    name:'F.I.R',
+    song:'月牙湾',
+    voice:'无损'
+}
+let obj2 = {};
+Object.assign(obj2,obj)
+obj.name = '飞儿乐团';
+console.log(obj2)
+
+let obj = {     //单层完全拷贝
+    name:'F.I.R',
+    song:'月牙湾',
+    voice:'无损'
+}
+let obj2 = {...obj};
+obj.name = '飞儿乐团';
+console.log(obj2)
+
+let obj = {     //单层完全拷贝
+    name:'F.I.R',
+    song:'月牙湾',
+    voice:'无损'
+}
+let obj2 = {};
+for(let key in obj){
+    obj2[key] = obj[key];
+}
+obj.name = '飞儿乐团';
+console.log(obj2)
+
+let obj = {     //完全拷贝
+        name: 'F.I.R',
+        song: '月牙湾',
+        voice: '无损',
+        content: {
+            first: '是谁的心啊',
+            second: '孤单的留下',
+            thrid: '他还好吗 我多想爱他',
+            fouth: '那永恒的泪凝固 那一句话'
+        }
+    }
+    function deepClone(target) {
+        let result;
+        if (typeof target === 'object') {
+            if (Array.isArray(target)) {
+                result = []
+                for (let val of target) {
+                    result.push(deepClone(val))
+                }
+            }
+            else {
+                result = {}
+                for (let item in target) {
+                    result[item] = deepClone(target[item])
+                }
+            }
+        }
+        else {
+            result = target;
+        }
+        return result;
+    }
+    let obj2 = deepClone(obj)
+    obj.content.fouth = '向着我爱的人  追吧'
+    console.log(obj2)
+    array = [1,2,[6,7],3,4,5]
+    let array2 = deepClone(array)
+    array[2][0] = 'no'
+    console.log(array2)
+
+
+let pro = new Promise((resolve,reject)=>{
+      res = 'resolve'
+      setTimeout(()=>{
+        console.log('setTimeout');
+      }, 1000)
+      resolve();
+      reject();
+      return res
+  }).then(() =>{
+    console.log(res)
+  }).catch(()=>{
+    console.log('reject')
+  })
+</script>
+
+</html>

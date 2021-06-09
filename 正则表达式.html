@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    
+    </style>
+</head>
+<body>
+   
+</body>
+<script>
+    let str= 'helloworld';
+    let reg = /l{2}/;
+    console.log(reg.test(str))
+    console.log(reg.exec(str))
+    console.log(str.match(reg))
+
+    function foo(){
+     let str1 = 'aa'
+     let str = '   bb  '  
+     let reg = /^(\s)\1+/
+    console.log(str1+str.replace(reg,'')+str1) 
+        //    console.log(str.substring(reg.match(str)) ) 
+ }
+ foo()
+</script>
+</html>

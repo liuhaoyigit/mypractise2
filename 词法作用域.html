@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var barfnExeContext = {//环境变量对象
+        scopeChain: [
+            {
+                arguments: [],
+                name: '侯辟谷'
+            },
+            {//foofnExeContext
+                scopChain: [
+                    {
+                      arguments:[],
+                      name:'朱逸群',
+                      bar:function(){} 
+                    },
+                    {
+                      name:'魏生津',
+                      foo:function(){}
+                      //其他内置属性和方法
+                    }
+                ]
+
+            },
+            {
+                name:'魏生津',
+                foo:function(){},
+                //其他内置属性和方法
+            }
+        ]
+    }
+
+    barfnExeContext.scopeChain[0].name
+    //barfnExeContext.scopeChain[1].name.scopeChain[0].name
+    //barfnExeContext.scopeChain[1].name.scopeChain[1].name
+    barfnExeContext.scopeChain[1].name
+</script>
+
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            width: 50px;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .line {
+            display: inline;
+            margin-left: 21px;
+        }
+
+        .inline {
+            margin-top: 0;
+            transform: translate(-29.5%, -50%)
+        }
+
+        .line-bottom {
+            border-bottom: 1px solid black;
+            width: 400px;
+            height: 1px;
+            transform: translate(10%, -1000%)
+        }
+
+        button {
+            color: white;
+            background-color: rgb(81, 166, 223)
+        }
+
+        .box {
+            background-color: rgb(81, 166, 223);
+            width: 20px;
+            height: 0;
+            margin-left: 15px;
+            transform: translateX(270%);
+        }
+
+        .content {
+            display: flex;
+            float: left;
+            width: 500px;
+            height: 200px;
+            /* border:1px black solid; */
+            transform: translateY(-220px);
+            border-bottom: 0;
+            align-items: flex-end;
+        }
+    </style>
+</head>
+
+<body>
+    <span class='text'>最小值:</span><input class='input' value=''>
+    <span class='text'>最大值:</span><input class='input' value=''>
+    <span class='text'>数量:</span><input class='input' value=''>
+    <span class='text'>排序:</span>
+    <select name='sort'>
+        <option>从小到大</option>
+        <option>从大到小</option>
+    </select>
+    <button id='append'>生成</button>
+
+    <ul>
+        <li>90</li>
+        <li>80</li>
+        <li>70</li>
+        <li>60</li>
+        <li>50</li>
+        <li>40</li>
+        <li>30</li>
+        <li>20</li>
+        <li>10</li>
+        <li>0</li>
+    </ul>
+    <div class='content'>
+        <div class='box'></div>
+        <div class='box'></div>
+        <div class='box'></div>
+        <div class='box'></div>
+        <div class='box'></div>
+        <div class='box'></div>
+        <div class='box'></div>
+        <div class='box'></div>
+        <div class='box'></div>
+        <div class='box'></div>
+    </div>
+    <div class='line-bottom'></div>
+    <ul class='inline'>
+        <li class='line'>1 </li>
+        <li class='line'>2 </li>
+        <li class='line'>3 </li>
+        <li class='line'>4 </li>
+        <li class='line'>5 </li>
+        <li class='line'>6 </li>
+        <li class='line'>7 </li>
+        <li class='line'>8</li>
+        <li class='line'>9</li>
+        <li class='line'>10</li>
+    </ul>
+
+</body>
+<script>
+    var oBtn = document.getElementById('append')[0]
+    var oBox = document.querySelectorAll('.box')
+    var oSel = document.getElementsByTagName('select')[0].value
+    var arr = []
+    var count = document.getElementsByClassName('input')[2].value;
+    var oBox = [];
+    var newArr = [];
+    var max;
+    var min;
+    var cou;
+    append.onclick = function () {
+
+        var oInput = document.getElementsByClassName('input')
+        oSel = document.getElementsByTagName('select')[0].value
+        count = oInput[2].value;
+        oBox = document.querySelectorAll('.box')
+        max = parseInt(oInput[1].value);
+        min = parseInt(oInput[0].value);
+        if ((count <= 0) || (count > 10) || (max > 99) || (min < 0) || (max < min)) {
+            alert('异常')
+        } else {
+            for (i = 0; i < count; i++) {
+                cou = parseInt(Math.random() * (max - min))
+                 x = (min + cou) * 2 + 'px'
+                 y = ((x.replace('px', 0)) * 0.11)
+                arr.push(y)
+                arr.sort((a, b) => {
+                    return a - b;
+                })
+                newArr.push(y)
+                newArr.sort((a, b) => {
+                    return b - a;
+                })
+            }
+            console.log(arr)
+            if (oSel == '从小到大') {
+                for (j = 0; j < count; j++) {
+                    oBox[j].style.height = arr[j] + 'px'
+                }
+            }
+            else if (oSel == '从大到小') {
+                for (j = 0; j < count; j++) {
+                    oBox[j].style.height = newArr[j] + 'px'
+                }
+            }
+        }
+
+
+
+    }
+</script>
+
+</html>

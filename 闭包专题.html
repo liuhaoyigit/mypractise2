@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    li {
+        list-style: none;
+    }
+</style>
+
+<body>
+    <ul id='ul'>
+        <li>11111</li>
+        <li>22222</li>
+        <li>33333</li>
+        <li>44444</li>
+        <li>55555</li>
+    </ul>
+</body>
+<script>
+    //     name = '朱逸群'    //window下有name不会报错 name1会报错
+    //     name1 = '魏生津'
+    //     function foo(){
+    //         name = '胡丽晶'
+    //         name1 = '费结合'
+    //         function fn(){
+    //             name = '珍香'
+    //             name1 = '林八结'
+    //             console.log(name,name1)
+    //         }
+    //         return fn
+    //     }
+    //    var fun = foo()
+    //    fun()
+
+
+    //    function run() {                  //使用定义时候的变量不是调用时候的变量
+    //         var words = 'hello'
+    //         var say = function () {
+    //              console.log(words)
+    //         }
+    //         say()
+    //     }
+    //     var words = 'my'
+    //     run()
+
+    // function foo(){               
+    //     name = '侯辟谷'
+    //     function fn(){
+    //         console.log(name)    //调用了name  name不会释放否则释放
+    //     }
+    //     return fn
+    // }
+    // var fun = foo()
+    // fun()
+
+    // for (var i = 0; i < 10; i++) { 
+    //         setTimeout(() => {
+    //             console.log(i)
+    //         }, 1000)
+    // }
+    // for (let i = 0; i < 10; i++) {          //解决方法一
+    //         setTimeout(() => {
+    //             console.log(i)
+    //         }, 1000)
+    // }
+    // for (var i = 0; i < 10; i++) {          //解决方法二
+    //     (function (j) {
+    //         setTimeout(() => {
+    //             console.log(j)
+    //         }, 1000)f
+    //     })(i)
+    // }
+
+
+    // var oUl = document.getElementById('ul');
+    // var oLi = oUl.getElementsByTagName('li');
+    // for (var i = 0; i < 5; i++) {
+    //     oLi[i].onclick = function () {
+    //         console.log(i)
+    //     }
+    // }
+    // var oUl = document.getElementById('ul');         //解决方案一
+    // var oLi = oUl.getElementsByTagName('li');
+    // for (let i = 0; i < 5; i++) {
+    //     oLi[i].onclick = function () {
+    //         console.log(i)
+    //     }
+    // }
+    // var oUl = document.getElementById('ul');         //解决方案二
+    // var oLi = oUl.getElementsByTagName('li');
+    // for (var i = 0; i < 5; i++) {
+    //     oLi[i].index = i
+    //     oLi[i].onclick = function () {
+    //         console.log(this.index)
+    //     }
+    // }
+    // var oUl = document.getElementById('ul');          //解决方案三
+    // var oLi = oUl.getElementsByTagName('li');
+    // for (var i = 0; i < 5; i++) {
+    //     (function (j) {
+    //         oLi[j].onclick = function () {
+    //             console.log(j)
+    //         }
+    //     })(i)
+    // }
+
+    // function foo(params){                         //闭包的用途
+    //     function fn(){
+    //             console.log(params)
+    //     }
+    //     return fn
+    // }
+    // var bar = foo('111')
+    // setTimeout(bar,1000);
+
+
+    var Ball = function (_color, _size) {             //闭包的私有成员存在
+        this.color = _color;                            //this指向ball
+        var size = _size;
+        this.getBall = function () {
+            return this.color
+        }
+        this.setBall = function (_color) {
+            this.color = _color
+        }
+        this.getSize = function () {
+            return size
+        }
+        this.setSize = function (_size) {
+            size = _size
+        }
+    }
+    var basketball = new Ball('brown', 200);
+    console.log(basketball.getBall());
+    console.log(basketball.getSize());
+
+    basketball.color = 'blue'
+    console.log(basketball.getBall());
+    basketball.size = 300
+    console.log(basketball.getSize());
+
+    basketball.setBall('red')
+    console.log(basketball.getBall());
+    basketball.setSize(500)
+    console.log(basketball.getSize());
+
+
+
+
+</script>
+
+</html>

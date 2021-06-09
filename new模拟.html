@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function newFn(){
+        var obj = {};                            //生成对象
+        var con = [].shift.call(arguments);     //提取类
+        obj.__proto__=con.prototype;              //原型指向
+        var result = con.apply(obj,arguments);   //this指向
+        return result instanceof Object?result:obj; //返回结果
+    }
+    function Car(color,name,type){
+          this.color = color;
+          this.name = name;
+          this.type = type;
+    }
+
+    Car.prototype.move = function(){
+        console.log('the '+this.name+' in '+this.color+':'+this.type+'去哈尔滨')
+    }
+
+    var p1 = newFn(Car,'red','bt','card');
+    console.log(p1);
+    p1.move();
+</script>
+</html>

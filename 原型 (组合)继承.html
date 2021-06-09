@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var Follow = function (color, length) {
+        this.color = color;
+        this.length = length;
+    }
+    Follow.prototype.say = function () {
+        console.log('我的高度是' + this.length + 'cm')
+    }
+    Follow.prototype.photosynthsis = function () {
+        console.log('光合作用')
+    }
+
+    var lotus = new Follow('pink', 75)
+    console.log(lotus)
+    lotus.say()
+    lotus.photosynthsis()
+
+    var Bloom = function (color, length) {         //组合继承=>
+        Follow.call(this, color, length)
+    }
+    Bloom.prototype = Object.create(Follow.prototype)   //原型继承一
+    Bloom.prototype = new Follow()                     //原型继承二
+    Bloom.prototype.constructor = Bloom             //<=组合继承
+    Bloom.prototype.cold = function(){                //添加方法
+        console.log('cold')
+    }
+                                                
+    var clubs = new Bloom('white', '20')
+    console.log(clubs)
+    clubs.say()
+    clubs.photosynthsis()
+    clubs.cold()
+</script>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       .sy{
+           /* width: 200px;
+           height: 100px; */
+           float:left;
+           background:blue;
+       }
+       .wqc{
+           /* width: 200px;
+           height: 100px; */
+           float:left;
+           background:red;
+       }
+       .parent{
+           /* height: 200px;  */                              /*    1父元素添加高度 */
+           /* width: 200px;  */
+           background:silver;
+           /* overflow: hidden;  */                              /* 2添加overflow:hidden触发BFC*/
+
+       }
+       .text{
+           border:1px solid black;
+           background:yellow;
+       }
+        .parent::after{                                        /*   3clearfix */
+           content:'';
+           display:block;
+           clear:both;
+       }
+    </style>
+</head>
+<body>
+    <div class='box'>脱离文档流</div>
+    <div class='parent'>
+        <div class='sy'>111</div>
+        <div class='wqc'>222</div>
+    </div>
+    <div class='text'>hello world</div>
+</body>
+</html>
