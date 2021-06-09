@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            height: 300px;
+            width: 500px;
+            margin: 100px auto;
+            border: 1px black solid;
+        }
+
+        .tabbat {
+            height: 20px;
+            overflow: hidden;
+            border-bottom: 1px black solid;
+        }
+
+        .tab {
+            float: left;
+            list-style: none;
+            background-color: grey;
+            width: 100px;
+            margin-right: 2px;
+            padding: 0;
+        }
+
+        .btn {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 20px;
+            width: 20px;
+            background-color: gray;
+            border: none;
+        }
+
+        .header {
+            position: relative;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .tabbat .active {
+            background-color: black;
+            color: white;
+        }
+
+        .section .box {
+            display: none;
+        }
+
+        .section .active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='container' id='tab1'>  
+        <div class='header'>
+            <ul class='tabbat'>
+                <li class='tab active'>一起数星星</li>
+                <li class='tab'>学猫叫</li>
+                <li class='tab'>雀跃</li>
+            </ul>
+            <button class='btn'>+</button>
+        </div>
+        <div class=section>
+            <div class='box active'>哦好想和你在一起，数着漫天小星星</div>
+            <div class='box'>我们一起学猫叫，一起喵喵喵喵喵</div>
+            <div class='box'>多想留在你的身边，让爱渗透了整个世界</div>
+        </div>
+    </div>
+
+    <!-- <div class='container' id='tab2'>
+        <div class='header'>
+            <ul class='tabbat'>
+                <li class='tab active'>一起数星星</li>
+                <li class='tab'>学猫叫</li>
+                <li class='tab'>雀跃</li>
+            </ul>
+            <button class='btn'>+</button>
+        </div>
+        <div class=section>
+            <div class='box active'>哦好想和你在一起，数着漫天小星星</div>
+            <div class='box'>我们一起学猫叫，一起喵喵喵喵喵</div>
+            <div class='box'>多想留在你的身边，让爱渗透了整个世界</div>
+        </div>
+    </div> -->
+
+</body>
+<!-- <script src='选项卡1.js'></script> -->
+<script src='选项卡2.js'></script>
+<script>
+    var QMTab = (function () {
+
+        function QMTab(options) {
+            this.width = options.width;
+            this.height = options.height;
+            this.tabNum = options.tabNum;
+            var defaultSettings = {
+                width: 500,
+                height: 300,
+                tabNum: 3
+            };
+            this.setting = qmlib.extend(defaultSettings,options)
+        }
+        QMTab.prototype.init = function(){
+            var holder = document.getElementById(this.setting.el.substring(1,5))
+            var _this = this
+            // var holder = document.querySelector(this.setting.el)
+            holder.style.width = this.setting.width + 'px';
+            holder.style.height = this.setting.height + 'px';
+            this.tabs = document.querySelectorAll('.tab');
+            this.boxes = document.querySelectorAll('.box');
+            this.tabbat = document.querySelector('.tabbat');
+            this.section = document.querySelector('.section');
+            // this.tabs = holder.querySelectorAll('.tab')
+            this.btn = document.querySelector('.btn')
+            for(i=0;i<this.tabs.length;i++){
+                this.tabs[i].index = i
+                // this.tabs[i].onclick = function(){
+                //     _this.switchTab(this.index);                                     //切换标签的方法可以在其他功能上复用
+                // }         
+            }
+            this.btn.onclick = function(){
+                _this.addNewTab()
+            }
+             this.tabbat.onclick = function(e){
+                if(e.target.tagName == 'LI'){
+                    _this.switchTab(e.target.index)
+                }
+             }
+         
+        }
+        QMTab.prototype.switchTab = function (tabIndex) {
+           for(i=0;i<this.tabs.length;i++){      
+                 this.tabs[i].className = 'tab';
+                 this.boxes[i].className = 'box';
+           }
+           this.tabs[tabIndex].className = 'tab active'
+           this.boxes[tabIndex].className = 'box active'
+        };
+        QMTab.prototype.addNewTab = function () {
+            var newTab = document.createElement('li')
+            newTab.innerText = 'new tab'
+            newTab.className = 'tab active'    
+            newTab.index = this.tabs.length
+            console.log(this.tabs)
+            this.tabbat.appendChild(newTab)
+
+            var newDiv = document.createElement('div')
+            newDiv.innerText = 'new content'
+            newDiv.className = 'box active'  
+            this.section.appendChild(newDiv) 
+           
+            this._updateTabs() 
+            this.switchTab(newTab.index)
+        };
+        QMTab.prototype._updateTabs = function(){
+            this.tabs = document.querySelectorAll('.tab');
+            this.boxes = document.querySelectorAll('.box')
+        }
+   
+      
+        return  QMTab;
+    })()
+       var tab1 = new QMTab({
+            width: 800,
+            height:500,
+            tabNum: 3,
+            el:'#tab1',
+          
+        });
+        tab1.init()
+        // var tab2 = new QMTab({
+        //     width: 800,
+        //     height: 300,
+        //     tabNum: 2,
+        //     el:'#tab2'
+        // }); 
+        //  tab2.init()
+// QMtechnology()
+</script>
+
+</html>
